@@ -1,0 +1,15 @@
+
+<!-- Sidebar content goes here -->
+<h1>CSTU</h1>
+<p>Course - Introduction to Cloud Computing</p>
+<ul>
+    {% for item in site.data.navigation %}
+        <li><a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+        {{ item.name }}
+        </a></li>
+    {% endfor %}
+</ul>
+
+
+
+
