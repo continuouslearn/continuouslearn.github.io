@@ -1,0 +1,44 @@
+Step 1 – Create an SSL Certificate
+
+openssl genrsa -out prometheus.key 2048
+
+Step 2 – Generate a certificate signing request
+
+openssl req -new -key prometheus.key -out prometheus.csr
+
+Step 3 – Output the certificate
+
+openssl x509 -req -days 365 -in prometheus.csr -signkey prometheus.key -out prometheus.crt
+
+Step 4 - Create Secret tls
+➜  k create secret tls grafana-tls --key grafana.key --cert grafana.crt --namespace monitoring
+
+//////////////////////////////
+➜  kubernetes-grafana git:(main) ✗ openssl genrsa -out grafana.key 2048
+Generating RSA private key, 2048 bit long modulus
+..............................................................................+++++
+..........+++++
+e is 65537 (0x10001)
+➜  kubernetes-grafana git:(main) ✗ openssl req -new -key grafana.key -out grafana.csr
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) []:US
+State or Province Name (full name) []:CA
+Locality Name (eg, city) []:MTV
+Organization Name (eg, company) []:CM
+Organizational Unit Name (eg, section) []:SRE
+Common Name (eg, fully qualified host name) []:
+Email Address []:gdsdong@gmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+➜  kubernetes-grafana git:(main) ✗ openssl x509 -req -days 365 -in grafana.csr -signkey grafana.key -out grafana.crt
+Signature ok
+subject=/C=US/ST=CA/L=MTV/O=CM/OU=SRE/emailAddress=gdsdong@gmail.com
+Getting Private key
