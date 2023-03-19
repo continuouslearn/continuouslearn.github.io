@@ -9,7 +9,6 @@ dropdownArray.forEach(function(el){
 
 	if(button != null){
 		button.onclick = function(event){
-			console.log("clicked arrow!!!!");
 			if(!menu.hasClass('show')) {
 				menu.classList.add('show');
 				menu.classList.remove('hide');
