@@ -18,36 +18,38 @@ body {
 
 .drop-container {
   width: 350px;
-  margin: 10% auto;
+  margin: 30px auto;
 }
 
 .drop-container > ul {
   list-style: none;
   padding: 0;
   margin: 0 0 20px 0;
+  border-top: 1px solid #d5d5d5;
+  border-bottom: 1px solid #d5d5d5;
 }
 
 .dropdown a {
   text-decoration: none;
+  color: black;
 }
 
-.dropdown [data-toggle="dropdown"] {
+.dropdown a:hover{
+  color: #cccccc;
+}
+
+.dropdown:first-child{
+    border-top: 0;
+}
+
+.dropdown {
   position: relative;
   display: block;
-  color: black;
-  /* background: #2980B9; */
-  -moz-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
-  -webkit-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
-  box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset; 
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-  padding: 10px;
-}
-
-.dropdown [data-toggle="dropdown"].first-item{
   border-top: 1px solid #d5d5d5;
+  padding: 10px 0px;
 }
 
-.dropdown [data-toggle="dropdown"]:hover {
+.dropdown:hover {
   color: #cccccc;
 }
 
@@ -58,6 +60,10 @@ body {
   color: black;
   top: 14px;
   right: 10px;
+}
+
+.dropdown .icon-arrow:hover{
+  cursor: pointer;
 }
 
 .dropdown .icon-arrow.open {
@@ -86,31 +92,26 @@ body {
   content: '\25BC';
 }
 
-.dropdown .dropdown-menu {
-  max-height: 0;
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.dropdown .dropdown-menu{
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .dropdown .dropdown-menu li {
-  padding: 0;
+    padding: 0;
 }
 
-.dropdown .dropdown-menu li a {
-  display: block;
-  color: #6f6f6f;
-  /* background: #EEE;  */
-  -moz-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
-  -webkit-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
-  box-shadow: 30px 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
-  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
-  padding: 10px 30px;
+.dropdown .dropdown-menu li a{
+    display: block;
+    padding-left: 30px;
 }
 
-.dropdown .dropdown-menu li a:hover {
-  color: #cccccc
+.dropdown .dropdown-menu hr{
+    margin-left: 30px;
+    border-top: 1px solid #d5d5d5;
 }
 
 .dropdown .show, .dropdown .hide {
