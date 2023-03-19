@@ -1,77 +1,37 @@
 
 <!-- Sidebar content goes here -->
-<h1>CSTU</h1>
+<h1>Cloud Computing</h1>
 <p>Course - Introduction to Cloud Computing</p>
-<ul>
-    {% for item in site.data.navigation %}
-        <li><a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
-        {{ item.name }}
-        </a></li>
-    {% endfor %}
-
-    <!-- 
-    Collection 1 
-
-        loop through collection 1 as dropdown menu if more than 1 file 
-    Collection 2 
-    Collection 3 
-        loop through collection 3 as dropdown menu if more than 1 file 
-    .. etc  
-    -->
-
-    {% for collection in site.collections %}
+<!-- 
+Collection 1 
+    loop through collection 1 as dropdown menu if more than 1 file 
+Collection 2 
+Collection 3 
+    loop through collection 3 as dropdown menu if more than 1 file 
+.. etc  
+-->
+<div class="drop-container">
+    <ul>
+        {% for collection in site.collections %}
         {% if collection.label != "posts" %}
-        <li>
+        <li class="dropdown">
             {% assign sorted_pages = site[collection.label] | sort:"order" %}
-            {% for page in sorted_pages %}
-                <div class = "btn-group">
-                {% if page.first %}
-                    <button type="button" onclick=" location.href = '{{ page.url }}'">{{page.title}}</button>
-                    {% if page.length > 0 %} 
-                    <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    {% endif %} 
-                {% else %}
-                    <div class = "dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a></li>
-                    </div>
-                {% endif %}
-            {% endfor %}
+            {% if sorted_pages.size > 1 %}
+                <a href="{{ sorted_pages.first.url }}" data-toggle="dropdown"><span>{{ sorted_pages.first.title }}</span><i class="icon-arrow"></i></a>
+                <ul class="dropdown-menu">
+                {% for page in sorted_pages offset:1 %}
+                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <a href="{{ sorted_pages.first.url }}" data-toggle="dropdown">{{ sorted_pages.first.title }}</a>
+            {% endif %}
         </li>
         {% endif %}
-    {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
 
-    <!-- {% assign sorted_pages = site.overview | sort:"order" %}
-    <li>
-    {% for page in sorted_pages %}
-        <div class = "btn-group">
-        {% if page.first %}
-            <button type="button" onclick=" location.href = '{{ page.url }}'">{{page.title}}</button>
-            {% if page.length > 1 %}
-            <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            {% endif %}
-        {% else %}
-            <div class = "dropdown-menu">
-                <li><a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a></li>
-            </div>
-        {% endif %}
-    {% endfor %} 
-    </li> 
-    -->
-               
-</ul>
-
-<!-- 
-<ul>
-    {% assign sorted_pages = site.overview | sort:"order" %}
-    {% for page in sorted_pages %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-    {% endfor %}
-</ul> 
--->
 
 
 

@@ -33,9 +33,11 @@ plugins:
 
 # Collections to group posts together 
 collections: 
-  motivation: 
+  1motivation: 
     output: true
-  overview: 
+  2overview: 
+    output: true 
+  3compose:
     output: true 
 collections_dir: pages
 
