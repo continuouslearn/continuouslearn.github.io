@@ -14,14 +14,14 @@ dropdownArray.forEach(function(el){
 				menu.classList.remove('hide');
 				arrow.classList.add('open');
 				arrow.classList.remove('close');
-				event.preventDefault();
+				// event.preventDefault();
 			}
 			else {
 				menu.classList.remove('show');
 				menu.classList.add('hide');
 				arrow.classList.remove('open');
 				arrow.classList.add('close');
-				event.preventDefault();
+				// event.preventDefault();
 			}
 		};
 	}
