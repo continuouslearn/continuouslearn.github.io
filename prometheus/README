@@ -27,18 +27,18 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Country Name (2 letter code) []:US
-State or Province Name (full name) []:CA
-Locality Name (eg, city) []:MTV
+Country Name (2 letter code) []:XX
+State or Province Name (full name) []:XX
+Locality Name (eg, city) []:XXX
 Organization Name (eg, company) []:CM
 Organizational Unit Name (eg, section) []:SRE
 Common Name (eg, fully qualified host name) []:
-Email Address []:gdsdong@gmail.com
+Email Address []:xxxxxxxx@gmail.com
 
 Please enter the following 'extra' attributes
 to be sent with your certificate request
 A challenge password []:
 ➜  kubernetes-grafana git:(main) ✗ openssl x509 -req -days 365 -in grafana.csr -signkey grafana.key -out grafana.crt
 Signature ok
-subject=/C=US/ST=CA/L=MTV/O=CM/OU=SRE/emailAddress=gdsdong@gmail.com
+subject=/C=US/ST=CA/L=XXX/O=CM/OU=SRE/emailAddress=xxxxxxx@gmail.com
 Getting Private key
