@@ -1,3 +1,17 @@
+// Check dropdown status when page is reloaded 
+window.addEventListener('load', function() {
+    var dropdownState = localStorage.getItem('dropdown-state');
+	var menu = this.localStorage.key(); 
+	console.log("reloaded", menu, dropdownState);
+    if (dropdownState === 'open') {
+		menu.classList.add('show');
+		menu.classList.remove('hide');
+		arrow.classList.add('open');
+		arrow.classList.remove('close');
+    }
+});
+
+
 // Dropdown Menu
 var dropdown = document.querySelectorAll('.dropdown');
 var dropdownArray = Array.prototype.slice.call(dropdown,0);
@@ -14,14 +28,16 @@ dropdownArray.forEach(function(el){
 				menu.classList.remove('hide');
 				arrow.classList.add('open');
 				arrow.classList.remove('close');
-				// event.preventDefault();
+				event.preventDefault();
+				localStorage.setItem(menu, 'open');
 			}
 			else {
 				menu.classList.remove('show');
 				menu.classList.add('hide');
 				arrow.classList.remove('open');
 				arrow.classList.add('close');
-				// event.preventDefault();
+				event.preventDefault();
+				localStorage.setItem(menu, 'closed');
 			}
 		};
 	}
