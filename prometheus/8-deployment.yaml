@@ -30,31 +30,25 @@ spec:
           - '--storage.tsdb.retention=6h'
           - '--storage.tsdb.path=/prometheus'
           - '--config.file=/etc/prometheus/prometheus.yml'
-          - '--web.config.file=/etc/prometheus/web/web-config.yml'
         ports:
         - name: web
           containerPort: 9090
         volumeMounts:
-        - name: prometheus-tls
-          mountPath: /etc/prometheus/tls        
-        - name: prometheus-webconfig-volume
-          mountPath: /etc/prometheus/web        
         - name: prometheus-config-volume
           mountPath: /etc/prometheus
         - name: prometheus-storage-volume
           mountPath: /prometheus
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
       restartPolicy: Always
       volumes:
-      - name: prometheus-tls
-        secret:
-          secretName: prometheus.tls      
-      - name: prometheus-webconfig-volume
-        configMap:
-          name: web-config     
       - name: prometheus-config-volume
         configMap:
           defaultMode: 420
           name: prometheus-config
       - name: prometheus-storage-volume
         persistentVolumeClaim:
-          claimName: pvc-nfs-data
+          claimName: prometheus-pvc
