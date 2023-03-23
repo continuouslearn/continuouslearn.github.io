@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv-2
+  namespace: monitoring
+  labels:
+    app: prometheus-deployment
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem    
+  hostPath:
+    path: "/mnt/promdata"

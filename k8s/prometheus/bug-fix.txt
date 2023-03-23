@@ -1,0 +1,15 @@
+
+
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534
+
+==>
+
+     securityContext:
+        fsGroup: 0
+        runAsGroup: 0
+        runAsUser: 0

@@ -7,9 +7,10 @@ metadata:
     app: prometheus-deployment
 spec:
   capacity:
-    storage: 500Mi
+    storage: 500Gi
   accessModes:
     - ReadWriteMany
+  volumeMode: Filesystem    
   hostPath:
     path: "/mnt/promdata"
 ---
