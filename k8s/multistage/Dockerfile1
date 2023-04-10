@@ -1,0 +1,15 @@
+FROM ubuntu:20.04 AS build
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y golang-go
+WORKDIR /app
+COPY app.go .
+RUN CGO_ENABLED=0 go build -o  /mygo
+
+FROM alpine:3.13
+RUN chmod a-w /etc
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup -h /home/appuser
+RUN rm -rf /bin/*
+COPY --from=build /mygo /home/appuser/
+EXPOSE 8888
+USER appuser
+CMD ["/home/appuser/mygo"]
