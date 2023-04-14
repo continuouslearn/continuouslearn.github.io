@@ -19,7 +19,7 @@ Collection 3
             {% if sorted_pages.size > 1 %}
                 <a href="{{ sorted_pages.first.url }}">{{ sorted_pages.first.title }}</a>
                 <i class="icon-arrow" data-toggle="dropdown"></i>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" id="{{ collection.label }}">
                 {% for page in sorted_pages offset:1 %}
                     <hr>
                     <li><a href="{{ page.url }}">{{ page.title }}</a></li>
