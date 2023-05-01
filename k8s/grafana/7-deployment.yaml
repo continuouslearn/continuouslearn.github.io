@@ -14,6 +14,8 @@ spec:
       labels:
         app: grafana
     spec:
+      securityContext:
+        runAsUser: 0
       containers:
       - name: grafana
         image: grafana/grafana:latest
@@ -28,9 +30,6 @@ spec:
             memory: 500M
             cpu: "500m"
         volumeMounts:
-          - name: grafana-certs
-            mountPath: /etc/grafana/certs/
-            readOnly: true
           - name: grafana-storage            
             mountPath: /var/lib/grafana
           - name: grafana-config
@@ -43,16 +42,9 @@ spec:
           configMap:
             name: grafana-ini
         - name: grafana-storage
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: grafana-pvc
         - name: grafana-datasources
           configMap:
-              defaultMode: 420
-              name: grafana-datasources
-        - name: grafana-certs
-          secret:
-            secretName: grafana-tls
-            items:
-            - key: tls.crt
-              path: tls.crt
-            - key: tls.key
-              path: tls.key              
+            defaultMode: 420
+            name: grafana-datasources

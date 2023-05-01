@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-ini
+  namespace: monitoring 
+data:
+  grafana.ini: |
+    [server]
+      protocol = http
+      http_port = 3000

@@ -1,15 +1,15 @@
----
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: grafana-pv
+  name: pv-loki-read-0
   namespace: monitoring
   labels:
-    app: grafana
+    app.kubernetes.io/name: loki
 spec:
   capacity:
-    storage: 500Mi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
+  volumeMode: Filesystem    
   hostPath:
-    path: "/mnt/grafana/data"
+    path: "/mnt/promdata"
