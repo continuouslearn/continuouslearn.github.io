@@ -1,7 +1,7 @@
 ## 1: Create a simple go web app
 
-```
 cat app.go
+```
 package main
 
 import (
