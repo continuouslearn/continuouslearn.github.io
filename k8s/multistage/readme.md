@@ -26,7 +26,7 @@ func main() {
 docker build -t test-go1 . -f Dockerfile
 ```
 
-# check image size
+### check image size
 
 ```
 docker images | grep test-go
