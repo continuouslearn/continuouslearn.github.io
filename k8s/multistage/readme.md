@@ -39,7 +39,7 @@ test-go1             latest                      cb34e2486a5c   10 days ago     
 docker build -t test-go2 . -f Dockerfile1
 ```
 
-# check image size
+### check image size
 ```
 docker images | grep test-go
 test-go2             latest                      31e265ca3236   10 days ago     12.4MB
