@@ -1,0 +1,13 @@
+config:
+  clients:
+    - url: http://loki-gateway.loki.svc.cluster.local/loki/api/v1/push
+      tenant_id: admin
+
+#daemonset:
+  # -- Deploys Promtail as a DaemonSet
+  #enabled: false
+
+#deployment:
+  # -- Deploys Promtail as a Deployment
+  #enabled: true      
+  #replicaCount: 2  

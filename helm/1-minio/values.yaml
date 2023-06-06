@@ -1,0 +1,7 @@
+mode: distributed
+service:
+  type: LoadBalancer
+persistence:
+  enabled: true
+statefulset:
+  drivesPerNode: 2  
