@@ -10,3 +10,6 @@ kubectl get secret --namespace minio minio -o jsonpath="{.data.root-password}" |
 
 helm -n minio uninstall minio
 
+Sync files:
+
+mc mirror  /var/log/  myminio/mac-logs/ --overwrite
