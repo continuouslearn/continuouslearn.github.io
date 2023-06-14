@@ -1,5 +1,10 @@
+server:
   persistentVolume:
-    ## If true, Prometheus server will create/use a Persistent Volume Claim
-    ## If false, use emptyDir
-    ##
     enabled: false
+  extraArgs:
+    web.config.file: /etc/config/web_config.yml
+serverFiles:
+  web_config.yml:
+    basic_auth_users:
+      bob: $2a$12$P550Bw15maKEZBKeCsMGPO2WGWniHRnZTe3dtFv/pJNAmYeAhJyp2
+      alice: $2a$12$P550Bw15maKEZBKeCsMGPO2WGWniHRnZTe3dtFv/pJNAmYeAhJyp2
