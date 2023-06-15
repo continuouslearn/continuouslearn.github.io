@@ -1,6 +1,13 @@
 server:
   persistentVolume:
     enabled: false
+  extraVolumeMounts:
+  - name: prometheus-tls
+    mountPath: /etc/prometheus/tls
+  extraVolumes:
+  - name: prometheus-tls
+    secret:
+      secretName: prometheus.tls
   extraArgs:
     web.config.file: /etc/config/web_config.yml
 serverFiles:
@@ -8,3 +15,6 @@ serverFiles:
     basic_auth_users:
       bob: $2a$12$P550Bw15maKEZBKeCsMGPO2WGWniHRnZTe3dtFv/pJNAmYeAhJyp2
       alice: $2a$12$P550Bw15maKEZBKeCsMGPO2WGWniHRnZTe3dtFv/pJNAmYeAhJyp2
+    tls_server_config:
+      cert_file: /etc/prometheus/tls/tls.crt
+      key_file: /etc/prometheus/tls/tls.key
